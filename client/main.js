@@ -10,9 +10,7 @@ document.getElementById('send').addEventListener('click', function() {
   socket.emit('client_msg', 'client_message');
 });
 
-const socket = io('http://localhost:8080', {
-  path: '/sockets'
-});
+const socket = io.connect('http://localhost:8080/sockets');
 
 socket.on('connect', function(msg){
   AppPrint('connected');

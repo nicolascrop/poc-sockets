@@ -1,7 +1,6 @@
 // You can send an existing server to use it instead of creating a new one
 const io = require('socket.io')(8080, {
-  path: '/sockets'
-});
+}).of('/sockets');
 
 // On connection is the entry point
 io.on('connection', function (socket) {
@@ -16,7 +15,7 @@ io.on('connection', function (socket) {
 
 
 setInterval(() => {
-  io.sockets.emit('server_msg', {
+  io.emit('server_msg', {
     type: 'important',
     content: 'server_msg'
   });
